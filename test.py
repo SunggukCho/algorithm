@@ -1,2 +1,3 @@
-A = list(map(int, input().split()))
-print(len(A))
+A = [1,2,3,4,5,6]
+B = max(A)
+print(A.index(B))
