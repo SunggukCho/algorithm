@@ -4,15 +4,11 @@ for tc in range(T):
 
     arr = [[0 for i in range(N)] for i in range(N)]
     # 순서 -> 우, 하, 좌, 상
-    u = -1
-    d = 1
-    r = 1
-    l = -1
+    dr = [0, 1, 0, -1]
+    dc = [1, 0, -1, 0]
 
-
-    for j in range(N):
-        if j+1 != len(arr):
-            arr[j] = j+1
-            l += 1
-        else:
-            arr[j] = j|1
+    i = 0
+    for i in range(N):
+        for j in range(N):
+            nr = j+dr[i]
+            nc = j+dc[i]
