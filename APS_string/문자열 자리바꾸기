@@ -1,0 +1,7 @@
+s = 'algorithm'
+empty = ''
+
+for i in s:
+    empty = i + empty
+
+print(empty)

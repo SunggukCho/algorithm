@@ -9,7 +9,7 @@ arr = [
 ]
 
 K = len(arr)
-L = len(arr)
+L = len(arr[0])
 
 #시계방향 상하좌우 체크
 dx = [0, 0, -1, 1]
