@@ -4,6 +4,4 @@ def fibo(n):
         f.append(f[i-1]+f[i-2])
     return f[n]
 
-#print(fibo(1500))
-
-print(chr(104), chr(117), chr(110))
+print(fibo(11))
