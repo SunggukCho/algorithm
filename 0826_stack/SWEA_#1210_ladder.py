@@ -14,7 +14,6 @@ for tc in range(1, T+1):
     x = 99                      #행
     y = arr[99].index(2)        #열
 
-    start = arr[x][y]
     visited = [[0]*100 for _ in range(100)]
 
     while x != 0:

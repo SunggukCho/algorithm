@@ -20,7 +20,7 @@ for tc in range(1, T+1):
                     cnt += 1
                 print('#{} {}'.format(tc, result))
 
-    #세로체크
+    #세로 체크
     if cnt <= 0:
         for i in range(N-M+1):
             for j in range(N):

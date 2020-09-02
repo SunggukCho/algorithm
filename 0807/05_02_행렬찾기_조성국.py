@@ -7,7 +7,6 @@ sys.stdin = open('matrix_input.txt', 'r')
 3. 이때 0이 아닌 부분의 가로와 세로 길이를 리스트에 넣는다. 
 """
 
-
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())    #행렬 크기

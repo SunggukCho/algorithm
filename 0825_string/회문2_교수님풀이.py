@@ -13,7 +13,7 @@ def find(row, start, end):
                 return
     #회문 발견
     if cnt < len:
-        cnt = len  
+        cnt = len
 
 T = 10
 N = 100
