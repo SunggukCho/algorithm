@@ -7,7 +7,8 @@ def dfs(s):
         return 1
     for w in range(1, N+1):
         if arr[s][w] == 1 and visit[w] ==0:
-            dfs(w)
+            if dfs(w):
+                return 1
     return 0
 
 

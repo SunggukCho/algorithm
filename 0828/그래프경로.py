@@ -13,7 +13,7 @@ for tc in range(1, int(input()) +1):
     #인접행렬
     G = [[0]*(V+1) for _ in range(V+1)
 
-     for _ in range(E):     #간선 정보 읽기
+    for _ in range(E):
         u, v = map(int, input().split())
         G[u][v] = 1         #유향 그래프이므로 한 번만 해준다. G[v][u]= 1 필요 없음
 

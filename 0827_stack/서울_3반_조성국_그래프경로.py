@@ -3,7 +3,6 @@ sys.stdin = open('graph.txt', 'r')
 
 def dfs(s):
     global g, e, result
-    stack.append(s)
     visited[s] = 1
     for w in range(1, v+1):
         if Map[s][w] == 1 and visited[w] == 0:
@@ -24,7 +23,8 @@ for tc in range(1, T+1):
     stack = []
     result = 0
     dfs(s)
-    if result:
-        print('#{} {}'.format(tc, 1))
-    else:
-        print('#{} {}'.format(tc, 0))
+    print(result)
+    # if result:
+    #     print('#{} {}'.format(tc, 1))
+    # else:
+    #     print('#{} {}'.format(tc, 0))

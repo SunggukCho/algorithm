@@ -22,7 +22,7 @@ powerset(N, 0)
 arr = [1,2,3]
 N = len(arr)
 A = [0] * N  #1, 0
-
+"""
 def powerset(n,k, cursum):
     if cursum > 10: return
     if n==k:
@@ -40,3 +40,4 @@ def powerset(n,k, cursum):
         powerset(n, k+1, cursum)
 
 powerset(N, 0, 0)
+"""

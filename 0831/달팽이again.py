@@ -8,14 +8,9 @@ dc = [1, 0, -1, 0]
 cnt = 1
 dir = 0
 while cnt <= N:
-    if i < 0 or i > T or j < 0 or j > T:continue
-    if arr[i][j+1] == 0:
-        arr[i][j] = cnt
-    else:
-        dir += 1
-        i = dr[dir]
-        j = dc[dir]
-
-        arr[i][j] = cnt
-        cnt += 1
-    print(arr)
+    nr = 0
+    nc = 0
+    if nr >= 0 and nr < len(arr) and nc >= 0 and nc < len(arr):
+        arr[nr][nc] = cnt
+        nr = dr[dir]
+        nc = dc[dir]
