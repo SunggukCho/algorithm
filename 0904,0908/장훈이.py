@@ -19,7 +19,6 @@ def subset(n, k):
     bit[n] = 1
     subset(n+1, k+1)
 
-
 T = int(input())
 for tc in range(1, T+1):
     N, B = map(int, input().split())

@@ -42,7 +42,6 @@ for tc in range(1, T+1):
         d3 = stack.pop()
         if d3 != '(':
             output += d3
-
 ## 2. 후위표기법 계산하기
     value_stack = []
     for i in output:

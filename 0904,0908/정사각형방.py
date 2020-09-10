@@ -23,11 +23,11 @@ for tc in range(1, T+1):
 
     cnt = 1
     result = []
-    #if tc <= 8:
-    for i in range(N):
-        for j in range(N):
-            find(i,j)
-        result.append(cnt)
-        cnt = 1
-    print(max(result))
+    if tc <= 7:
+        for i in range(N):
+            for j in range(N):
+                find(i,j)
+            result.append(cnt)
+            cnt = 1
+        print(max(result))
     #print('#{} {}'.format(tc, min_cnt))
