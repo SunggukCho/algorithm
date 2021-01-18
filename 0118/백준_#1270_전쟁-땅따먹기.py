@@ -1,17 +1,13 @@
 n = int(input())
-for i in range(n):
+for _ in range(n):
     arr = list(map(int, input().split()))
-    num = arr.pop(0)
+    num = arr[0]
+    arr = arr[1:]
+    arr.sort()
     arr_set = set(arr)
-    maxN = maxV = 0
+    ans = "SYJKGW"
     for j in arr_set:
-        if maxV < arr.count(j):
-            maxV = arr.count(j)
-            maxN = j
-            if maxV > num / 2:
-                ans = maxN
-                break
-            else:
-                ans = "SYJKGW"
-
+        if arr.count(j) > (num / 2):
+            ans = j
+            break
     print(ans)
