@@ -1,9 +1,24 @@
 import sys; sys.stdin = open('balance.txt', 'r')
-T = int(input())
-for tc in range(1, T+1):
+for t in range(int(input())):
     N = int(input())
-    arr = list(map(int, input().split()))
-    x_axis = arr[0:N]
-    mass = arr[N:]
-
-    #F = G * m1 * m2 / (d * d),
+    lis = list(map(int,input().split()))
+    x = lis[:N]
+    m = lis[N:]
+    print(f'#{t+1} ',end='')
+    for i in range(N-1):
+        l = x[i]
+        r = x[i+1]
+        for _ in range(50):
+            s = 0
+            mid = (l+r)/2
+            for k in range(i+1):
+                s += m[k]/((mid-x[k])*(mid-x[k]))
+            for k in range(i+1,N):
+                s -= m[k]/((mid-x[k])*(mid-x[k]))
+            if s > 0:
+                l = mid
+            else:
+                ans = mid
+                r = mid
+                #print(mid)
+        print('%.10f' % ans )
