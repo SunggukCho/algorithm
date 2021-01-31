@@ -68,22 +68,27 @@ for tc in range(1, T+1):
 # 세 번째 try
 ## domino 값을 받을 때부터 dict로 연결시켜 속도향상을 노림.
 ## queue도 deque를 사용
+# => 그래도 시간초과...
 from collections import deque
 T = int(input())
 for tc in range(1, T+1):
     n, m, l = map(int, input().split())
     domino = dict()
+
     for i in range(m):
         x, y = map(int, input().split())
         domino[x] = y
+    z = [int(input()) for _ in range(l)]
     fall = [0]*(n+1)            #해당 번호 도미노가 넘어지면 1로 표기
 
     for i in range(l):
-        z = int(input())
         Q = deque()
-        Q.append(z) #손으로 넘기는 도미노 번호 Q에 추가
+        Q.append(z[i]) #손으로 넘기는 도미노 번호 Q에 추가
         while Q:  # 손으로 넘기는 도미노 뒤에 연결된 도미노를 찾아 연쇄적으로 넘겨준다
             tmp = Q.popleft()
-            fall[tmp] = 1       #손으로 넘기는 것은 무조건 1처리, 이후 들어오는 값들도 처리
-            
+            if fall[tmp] == 0:
+                fall[tmp] = 1       #손으로 넘기는 것은 무조건 1처리, 이후 들어오는 값들도 처리
+                next = domino.get(tmp)
+                if next != None:
+                    Q.append(next)
     print(sum(fall))
