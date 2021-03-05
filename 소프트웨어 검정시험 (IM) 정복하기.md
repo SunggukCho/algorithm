@@ -1,6 +1,6 @@
 # 소프트웨어 검정시험 (IM) 정복하기
 
-백준 문제 목록
+백준 문제 목록 
 
 1. 2669 직사각형 네개의 합집합의 면적 구하기 | https://www.acmicpc.net/problem/2669
 2. 2635 수 이어가기 | https://www.acmicpc.net/problem/2635
