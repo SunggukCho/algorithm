@@ -13,7 +13,7 @@ def bfs(r, c):
     dc = [0, 1, 0, -1]
     Q = []
     Q.append([r, c])
-    while len(Q):
+    while Q:
         s = Q.pop(0)
         sr, sc = s[0], s[1]
         for i in range(4):
