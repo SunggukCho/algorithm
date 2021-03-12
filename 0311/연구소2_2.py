@@ -10,23 +10,6 @@ from itertools import combinations
 from collections import deque
 dr = [-1, 0, 1, 0]
 dc = [0, 1, 0, -1]
-def bfs(r, c):
-    visited[r][c] = 0
-    Q = deque()
-    Q.append((r, c, 0))
-    while Q:
-        r, c, cnt = Q.popleft()
-        for k in range(4):
-            nr = r+dr[k]
-            nc = c+dc[k]
-            if 0 <= nr < N and 0 <= nc < N and lab[nr][nc] != 1:
-                if visited[nr][nc] > cnt:
-                    Q.append((nr, nc, cnt+1))
-                    visited[nr][nc] = cnt + 1
-                elif visited[nr][nc] == -1:
-                    Q.append((nr, nc, cnt + 1))
-                    visited[nr][nc] = visited[r][c]+1
-
 
 N, M = map(int, input().split())
 lab = [list(map(int, input().split())) for _ in range(N)]
@@ -49,9 +32,25 @@ for combs in virus_combs:
 
     for comb in combs:
         r, c = comb
-        bfs(r, c)
+        visited[r][c] = 0
+        Q = deque()
+        Q.append((r, c, 0))
+        while Q:
+            r, c, cnt = Q.popleft()
+            for k in range(4):
+                nr = r + dr[k]
+                nc = c + dc[k]
+                if 0 <= nr < N and 0 <= nc < N and lab[nr][nc] != 1:
+                    if visited[nr][nc] > cnt:
+                        Q.append((nr, nc, cnt + 1))
+                        visited[nr][nc] = cnt + 1
+                    elif visited[nr][nc] == -1:
+                        Q.append((nr, nc, cnt + 1))
+                        visited[nr][nc] = visited[r][c] + 1
+    # for row in visited:
+    #     print(row)
 
-    flag = True #전부 다 퍼져있는가?
+    flag = True  # 전부 다 퍼져있는가?
     maxV = 0
     for i in visited:
         min_row = min(i)
@@ -65,5 +64,4 @@ for combs in virus_combs:
     if flag:
         if result > maxV or result == -1:
             result = maxV
-
 print(result)
