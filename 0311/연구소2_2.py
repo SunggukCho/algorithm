@@ -8,47 +8,45 @@ BFS로 visited를 채운다.
 '''
 from itertools import combinations
 from collections import deque
+from copy import deepcopy
 dr = [-1, 0, 1, 0]
 dc = [0, 1, 0, -1]
 
 N, M = map(int, input().split())
 lab = [list(map(int, input().split())) for _ in range(N)]
 virus = deque()
-walls = deque()
+origin_visited = [[-1]*N for _ in range(N)]    #첫 출발을 0으로 둬야 하기 때문에 -1로 둔다.
 for i in range(N):
     for j in range(N):
         if lab[i][j] == 2:      #바이러스 투척 장소
             virus.append((i, j))
         elif lab[i][j] == 1:    #벽
-            walls.append((i, j))
+            origin_visited[i][j] = 0
 
 virus_combs = list(combinations(virus, M))
 result = -1
+# for row in visited:
+#     print(row)
+# print()
 for combs in virus_combs:
-    visited = [[-1]*N for _ in range(N)]    #첫 출발을 0으로 둬야 하기 때문에 -1로 둔다.
-
-    for x, y in walls:
-        visited[x][y] = 0
-
+    visited = deepcopy(origin_visited)
+    Q = deque()
     for comb in combs:
         r, c = comb
         visited[r][c] = 0
-        Q = deque()
-        Q.append((r, c, 0))
-        while Q:
-            r, c, cnt = Q.popleft()
-            for k in range(4):
-                nr = r + dr[k]
-                nc = c + dc[k]
-                if 0 <= nr < N and 0 <= nc < N and lab[nr][nc] != 1:
-                    if visited[nr][nc] > cnt:
-                        Q.append((nr, nc, cnt + 1))
-                        visited[nr][nc] = cnt + 1
-                    elif visited[nr][nc] == -1:
-                        Q.append((nr, nc, cnt + 1))
-                        visited[nr][nc] = visited[r][c] + 1
+        Q.append((r, c))
+    while Q:
+        r, c = Q.popleft()
+        for k in range(4):
+            nr = r + dr[k]
+            nc = c + dc[k]
+            if 0 <= nr < N and 0 <= nc < N and visited[nr][nc] == -1:
+                Q.append((nr, nc))
+                visited[nr][nc] = visited[r][c] + 1
+    # print(combs)
     # for row in visited:
     #     print(row)
+    # print()
 
     flag = True  # 전부 다 퍼져있는가?
     maxV = 0
